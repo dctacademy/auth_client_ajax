@@ -1,0 +1,28 @@
+<h2>Login </h2>
+<%= form_for @user, url: "/sessions", remote: true do |f| %>
+    <div id="errors">
+  <% if @user.errors.any? %>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  <% end %>
+      </div>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+    <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Login" %>
+  </div>
+<% end %>

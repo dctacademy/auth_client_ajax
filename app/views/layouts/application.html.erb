@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assessment</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if current_user %> 
+	Hello <%= current_user.email %>
+	<%= link_to "contacts", contacts_path %>
+	<%= link_to "logout", user_path(current_user.id), method: :delete %>
+<% else %>
+	<%= link_to "Register", new_user_path %> 
+	<%= link_to "Login", new_session_path %> 
+
+<% end %>
+
+
+<%= notice %>
+<%= yield %>
+
+
+<%= debug(session[:user]) %>
+</body>
+</html>
